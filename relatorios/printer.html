@@ -1,0 +1,26 @@
+<head>
+	<script>
+		var ip1 = "http://25.180.57.97/";
+		var ip2 = "http://192.168.0.111/";
+		
+		var frameA = '<iframe src="http://192.168.0.111/" width="100%" height="93%" id="frame"></iframe>';
+		var frameB = '<iframe src="http://25.180.57.97/" width="100%" height="93%" id="frame"></iframe>';
+			
+		function changeIp()
+		{
+			var frame = document.getElementById("frame");
+			var divFrame = document.getElementById("divFrame");
+			
+			if (divFrame.innerHTML == frameB)
+				divFrame.innerHTML = frameA;
+			else 
+				divFrame.innerHTML = frameB;
+		}
+	</script>
+</head>
+
+<input type="button" value="Recarregar" onClick="changeIp();">
+
+<div id="divFrame">
+	<iframe src="http://192.168.0.111/" width="100%" height="93%" id="frame"></iframe>
+</div>
