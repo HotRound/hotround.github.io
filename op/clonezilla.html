@@ -12,7 +12,5 @@
 <h2>Comandos que serão utilizados:</h2>
 
 <pre>
-sudo apt-get install clonezilla -y
-sudo /usr/sbin/ocs-onthefly -g auto -e1 auto -e2 -r -j2  -f sda -t sdb -b
-exit
-</pre>
+sudo apt-get install clonezilla -y && sudo /usr/sbin/ocs-onthefly -g auto -e1 auto -e2 -r -j2  -f sda -t sdb -b -p poweroff && shutdown -h now
+shutdown -h now
