@@ -18,6 +18,6 @@ xfconf-query -c thunar-volman -p /autobrowse/enabled -s false # disable thunar p
 sudo xfconf-query -c thunar-volman -p /automount-drives/enabled -s false # disable drive automount
 sudo xfconf-query -c thunar-volman -p /automount-media/enabled -s false # disable media automount
 sudo xfconf-query -c thunar-volman -p /autobrowse/enabled -s false # disable thunar popping up
-sudo apt-get install clonezilla -y && sudo /usr/sbin/ocs-onthefly -g auto -e1 auto -e2 -icds -r -j2  -f sda -t sdb -b -p poweroff && shutdown -h now
+sudo apt-get install clonezilla -y && sudo /usr/sbin/ocs-onthefly -g auto -e1 auto -e2 -icds -r -j2  -f sda -t sdb -b -fsck-y -p poweroff && shutdown -h now
 shutdown -h now
 exit
