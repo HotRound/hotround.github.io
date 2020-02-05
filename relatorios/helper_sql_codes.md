@@ -6,6 +6,8 @@ SELECT M.DATAFIM AS Data, O.LOGIN AS Op, SUM(M.valorpago) - SUM(M.valorprod) AS 
 '31-DEC-2020' AND
 O.CODIGO = M.CODUSU
 GROUP BY M.DATAFIM, Op
+ORDER BY data ASC, op desc
+
 
 
 # Entradas GERAIS
