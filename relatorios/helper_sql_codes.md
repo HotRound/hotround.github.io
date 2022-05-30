@@ -1,13 +1,22 @@
 # Máquinas e Produtos
 
 
-SELECT M.DATAFIM AS Data, O.LOGIN AS Op, SUM(M.valorpago) - SUM(M.valorprod) AS Maquinas, SUM(M.valorprod) AS Produtos, IIF( SUM(M.DESCVALOR) > 3, SUM(M.DESCVALOR), '') AS Desconto FROM MOVIMENTOHIST AS M, SENHA as O WHERE DATAFIM BETWEEN 
-'01-MAY-2021' AND 
-'31-DEC-2222' AND
-O.CODIGO = M.CODUSU
-GROUP BY M.DATAFIM, Op
-ORDER BY data ASC, op desc
-
+SELECT M.DATAFIM AS Data, 
+	O.LOGIN AS Op,
+	SUM(M.valorpago) - SUM(M.valorprod) AS Maquinas, 
+	SUM(M.valorprod) AS Produtos, 
+	IIF( SUM(M.DESCVALOR) > 3, SUM(M.DESCVALOR), '') AS Desconto,
+	SUM( CAST(SUBSTRING(M.TEMPOPAUSA FROM 4 FOR 2) AS integer) + (60 * CAST(SUBSTRING(M.TEMPOPAUSA FROM 1 FOR 2) AS integer)) ) AS Pausa
+FROM MOVIMENTOHIST AS M, SENHA as O 
+WHERE 
+	DATAFIM BETWEEN '01-MAY-2021' AND '31-DEC-2222' 
+	AND O.CODIGO = M.CODUSU 
+GROUP BY 
+	M.DATAFIM, 
+	Op 
+ORDER BY 
+	data ASC, 
+	op DESC
 
 
 # Entradas GERAIS
@@ -113,6 +122,14 @@ ORDER BY DATA ASC, HORA ASC
 --------------------------------------------------------------------------------
 
 # POUCO USADOS
+
+# Pausas
+
+SELECT LOGIN, NOME, DATAINI, DATAFIM, HORAINI, HORAFIM, TEMPOPAUSA 
+FROM MOVIMENTOHIST
+LEFT JOIN CLIENTES ON CLIENTES.CODIGO = MOVIMENTOHIST.CODCLI
+WHERE DATAINI>'01-JAN-2022'
+AND TEMPOPAUSA > '00:00'
 
 # Quando um funcionario fica no Login do Outro, e é preciso fazer o relatório por horário:
 
