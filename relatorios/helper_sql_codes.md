@@ -1,6 +1,6 @@
 # Máquinas e Produtos
 
-
+```
 SELECT M.DATAFIM AS Data, 
 	O.LOGIN AS Op,
 	SUM(M.valorpago) - SUM(M.valorprod) AS Maquinas, 
@@ -17,7 +17,7 @@ GROUP BY
 ORDER BY 
 	data ASC, 
 	op DESC
-
+```
 
 # Entradas GERAIS
 
